@@ -1,0 +1,20 @@
+//
+//  Develop.xcconfig
+//  EfrontiersTest
+//
+//  Created by Xavi Tordera on 08/07/2020.
+//  Copyright © 2020 Xavi Tordera. All rights reserved.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+// This would be a possible Environment configuration, in case more configurations were needed
+#include "Pods/Target Support Files/Pods-EfrontiersTest/Pods-EfrontiersTest.release.xcconfig"
+
+// Server Base URL
+BASE_URL = https:/$()/apidev.meep.me/tripplan/api/v1
+
+// App Settings
+APP_NAME = (DEV) eFrontiers
+APP_BUNDLE_ID = com.xtordera.efrontiersTest
