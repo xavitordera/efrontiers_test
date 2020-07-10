@@ -9,14 +9,11 @@
 import SwiftUI
 
 struct ContentView: View {
+    @ObservedObject var locationManager: LocationManager
+    @ObservedObject var viewModel: MapViewModel
     var body: some View {
         MapView()
+        .environmentObject(viewModel)
             .edgesIgnoringSafeArea(.all)
-    }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
     }
 }

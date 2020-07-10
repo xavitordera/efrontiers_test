@@ -9,31 +9,28 @@
 import SwiftUI
 import GoogleMaps
 
-struct MapView
-: UIViewRepresentable {
+struct MapView: UIViewRepresentable {
+    @EnvironmentObject var viewModel: MapViewModel
+    var locationManager = CLLocationManager()
     
-        // 1
-    @Binding var locationManager: LocationManager
-    @Binding var viewModel: MapViewModel
+    func setupManager() {
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.requestAlwaysAuthorization()
+        
+        locationManager.delegate = viewModel
+    }
     
-        private let zoom: Float = 15.0
-        
-    func makeUIView(context: MapView.Context) -> GMSMapView {
-            let camera = GMSCameraPosition.camera(withLatitude: locationManager.currentLocation?.coordinate.latitude ?? 0.0, longitude: locationManager.currentLocation?.coordinate.longitude ?? 0.0, zoom: zoom)
-            let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
-            return mapView
-        }
-        
-        // 3
-        func updateUIView(_ mapView: GMSMapView, context: Context) {
-            //        let camera = GMSCameraPosition.camera(withLatitude: locationManager.latitude, longitude: locationManager.longitude, zoom: zoom)
-            //        mapView.camera = camera
-            mapView.animate(toLocation: CLLocationCoordinate2D(latitude: locationManager.latitude, longitude: locationManager.longitude))
-        }
-}
+    func makeUIView(context: Context) -> GMSMapView {
+        setupManager()
+        let mapView = GMSMapView(frame: UIScreen.main.bounds)
+        mapView.animate(to: .init(latitude: viewModel.latitude, longitude: viewModel.longitude, zoom: 15))
 
-struct MapView_Previews: PreviewProvider {
-    static var previews: some View {
-        MapView()
+        return mapView
+    }
+    
+    func updateUIView(_ mapView: GMSMapView, context: Context) {
+        mapView.animate(to: .init(latitude: viewModel.latitude, longitude: viewModel.longitude, zoom: 15))
+
     }
 }

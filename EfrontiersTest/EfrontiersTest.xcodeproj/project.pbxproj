@@ -18,6 +18,11 @@
 		107D988824B6216D00F21546 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107D988724B6216D00F21546 /* API.swift */; };
 		107D988A24B660A500F21546 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107D988924B660A500F21546 /* ContentView.swift */; };
 		107D988C24B6621E00F21546 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107D988B24B6621E00F21546 /* LocationManager.swift */; };
+		10F3180724B875A800D9A959 /* APIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F3180624B875A800D9A959 /* APIRouter.swift */; };
+		10F3180924B876AA00D9A959 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F3180824B876AA00D9A959 /* Environment.swift */; };
+		10F3180B24B8799200D9A959 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F3180A24B8799200D9A959 /* APIClient.swift */; };
+		10F3180D24B8841400D9A959 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F3180C24B8841400D9A959 /* APIError.swift */; };
+		10F3181024B8857900D9A959 /* ResourceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F3180F24B8857900D9A959 /* ResourceModel.swift */; };
 		6F3864EC0A22DFE73593FC9C /* Pods_EfrontiersTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCAD179720187BA88D1E26F2 /* Pods_EfrontiersTest.framework */; };
 		FA15EFD4B64E0E1FDCFD2503 /* Pods_EfrontiersTestTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C149D30535C22DF06288094 /* Pods_EfrontiersTestTests.framework */; };
 /* End PBXBuildFile section */
@@ -49,6 +54,11 @@
 		107D988724B6216D00F21546 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		107D988924B660A500F21546 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		107D988B24B6621E00F21546 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		10F3180624B875A800D9A959 /* APIRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRouter.swift; sourceTree = "<group>"; };
+		10F3180824B876AA00D9A959 /* Environment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
+		10F3180A24B8799200D9A959 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		10F3180C24B8841400D9A959 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
+		10F3180F24B8857900D9A959 /* ResourceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceModel.swift; sourceTree = "<group>"; };
 		176718F8F2221777FDEB42F6 /* Pods-EfrontiersTestTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EfrontiersTestTests.debug.xcconfig"; path = "Target Support Files/Pods-EfrontiersTestTests/Pods-EfrontiersTestTests.debug.xcconfig"; sourceTree = "<group>"; };
 		4C149D30535C22DF06288094 /* Pods_EfrontiersTestTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EfrontiersTestTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA8554A4E0E6184DE6890861 /* Pods-EfrontiersTestTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EfrontiersTestTests.release.xcconfig"; path = "Target Support Files/Pods-EfrontiersTestTests/Pods-EfrontiersTestTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -100,6 +110,7 @@
 		107D985A24B6113000F21546 /* EfrontiersTest */ = {
 			isa = PBXGroup;
 			children = (
+				10F3180E24B8850700D9A959 /* Model */,
 				107D988324B6130E00F21546 /* Resource */,
 				107D988124B612E800F21546 /* Helper */,
 				107D988024B612D900F21546 /* Service */,
@@ -159,6 +170,10 @@
 			isa = PBXGroup;
 			children = (
 				107D988724B6216D00F21546 /* API.swift */,
+				10F3180624B875A800D9A959 /* APIRouter.swift */,
+				10F3180824B876AA00D9A959 /* Environment.swift */,
+				10F3180A24B8799200D9A959 /* APIClient.swift */,
+				10F3180C24B8841400D9A959 /* APIError.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -179,6 +194,14 @@
 				107D986924B6113300F21546 /* Info.plist */,
 			);
 			path = Resource;
+			sourceTree = "<group>";
+		};
+		10F3180E24B8850700D9A959 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				10F3180F24B8857900D9A959 /* ResourceModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		16520CA2425B699147D14C77 /* Pods */ = {
@@ -372,10 +395,15 @@
 				107D985C24B6113000F21546 /* AppDelegate.swift in Sources */,
 				107D985E24B6113000F21546 /* SceneDelegate.swift in Sources */,
 				107D988A24B660A500F21546 /* ContentView.swift in Sources */,
+				10F3180B24B8799200D9A959 /* APIClient.swift in Sources */,
+				10F3180924B876AA00D9A959 /* Environment.swift in Sources */,
 				107D988C24B6621E00F21546 /* LocationManager.swift in Sources */,
 				107D986024B6113000F21546 /* MapView.swift in Sources */,
+				10F3181024B8857900D9A959 /* ResourceModel.swift in Sources */,
+				10F3180724B875A800D9A959 /* APIRouter.swift in Sources */,
 				107D988624B61BFF00F21546 /* MapViewModel.swift in Sources */,
 				107D988824B6216D00F21546 /* API.swift in Sources */,
+				10F3180D24B8841400D9A959 /* APIError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -11,9 +11,15 @@ import CoreLocation
 
 class LocationManager: NSObject, ObservableObject {
     private let locationManager = CLLocationManager()
+    
+    static let shared = LocationManager()
 
     // 1
-     @Published var location: CLLocation?
+    @Published var location: CLLocation? {
+        willSet {
+            objectWillChange.send()
+        }
+    }
     
     var currentLocation: CLLocation?
     
