@@ -26,6 +26,7 @@ struct MapView: UIViewRepresentable {
         let mapView = GMSMapView(frame: UIScreen.main.bounds)
         mapView.animate(to: .init(latitude: viewModel.latitude, longitude: viewModel.longitude, zoom: 15))
 
+        viewModel.requestPoints()
         return mapView
     }
     

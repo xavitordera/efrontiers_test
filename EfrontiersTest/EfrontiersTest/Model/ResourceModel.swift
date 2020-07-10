@@ -16,5 +16,7 @@ struct ResourceModel: Decodable {
     var locationType: Int?
     var companyZoneId: Int?
     var lat: Double?
-    var long: Double?
+    var lon: Double?
 }
+
+typealias ResourcesModel = [ResourceModel]

@@ -11,6 +11,14 @@ import Combine
 
 class MapViewModel: NSObject, ObservableObject {
     @Published var location: CLLocation?
+    @Published var dataSource: ResourcesModel = [] {
+        willSet {
+//            debugPrint(oldValue)
+            debugPrint(newValue)
+        }
+    }
+    @Published var error: APIError?
+    var cancellable: AnyCancellable?
     
     var latitude: CLLocationDegrees {
         location?.coordinate.latitude ?? 0
@@ -20,10 +28,13 @@ class MapViewModel: NSObject, ObservableObject {
         location?.coordinate.longitude ?? 0
     }
     
-    
-    
     func requestPoints() {
-        let xs : AnyPublisher<APIClient.shared.requestObject(for: APIRouter.resources(lat1: 35.2, long1: 21.2, lat2: 123.1, long2: 123.1))
+        let xs : AnyPublisher<ResourcesModel, Error>? = APIClient.shared.requestObject(for: APIRouter.resources(lat1: 38.711046, long1: -9.160096, lat2: 38.739429, long2: -9.137115))
+        
+        cancellable = xs?.receive(on: RunLoop.main)
+        .replaceError(with: [])
+            .assign(to: \MapViewModel.dataSource, on: self)
+    
     }
 }
 

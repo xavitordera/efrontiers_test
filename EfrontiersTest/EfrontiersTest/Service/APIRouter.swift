@@ -25,6 +25,19 @@ enum APIRouter {
         }
     }
     
+    var urlParameters: [URLQueryItem]? {
+        switch self {
+        case .resources(let lat1,
+                        let long1,
+                        let lat2,
+                        let long2):
+            return [
+                URLQueryItem.init(name: kParamZoneLeft, value: "\(lat1),\(long1)"),
+                 URLQueryItem.init(name: kParamZoneRight, value: "\(lat2),\(long2)")
+            ]
+        }
+    }
+    
     var path: String {
         switch self {
         case .resources(let lat1, let long1, let lat2, let long2):
@@ -36,7 +49,17 @@ enum APIRouter {
     func asURLRequest() -> URLRequest {
         let url = APIRouter.baseURL.appendingPathComponent(self.path)
         
-        var urlRequest = URLRequest(url: url)
+        let urlComp = url.absoluteString
+        
+        guard var components = URLComponents.init(string: urlComp) else {
+            return URLRequest.init(url: url)
+        }
+        
+        components.queryItems = self.urlParameters
+        var urlRequest = URLRequest.init(url: url)
+        if let url = components.url {
+            urlRequest = URLRequest(url: url)
+        }
         
         urlRequest.httpMethod = self.method
         urlRequest.allHTTPHeaderFields = self.headers

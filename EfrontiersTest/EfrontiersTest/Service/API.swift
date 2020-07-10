@@ -9,4 +9,7 @@
 import Foundation
 
 let kAPIGSMKey = "AIzaSyCsfNFC2n5bUE-4JrNJJnSSKOK-qpcsoQE"
-let kGETResources = "/routers/lisboa/resources?lowerLeftLatLon=%.6f,%.6f&upperRightLatLon=%.6f,%.6f"
+let kGETResources = "/routers/lisboa/resources"
+
+let kParamZoneLeft = "lowerLeftLatLon"
+let kParamZoneRight = "upperRightLatLon"
