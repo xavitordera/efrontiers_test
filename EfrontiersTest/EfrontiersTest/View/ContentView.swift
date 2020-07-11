@@ -9,11 +9,11 @@
 import SwiftUI
 
 struct ContentView: View {
-    @ObservedObject var locationManager: LocationManager
+    
     @ObservedObject var viewModel: MapViewModel
     var body: some View {
-        MapView()
-        .environmentObject(viewModel)
+        MapView(viewModel: viewModel)
+        
             .edgesIgnoringSafeArea(.all)
     }
 }

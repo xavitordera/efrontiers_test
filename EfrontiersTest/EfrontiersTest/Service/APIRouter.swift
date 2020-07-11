@@ -9,7 +9,12 @@
 import Foundation
 
 enum APIRouter {
-    case resources(lat1: Double, long1: Double, lat2: Double, long2: Double)
+    /// Route for the resources endpoint
+    /// - parameter lat1: latitude of the lower left corner
+    /// - parameter long1: longitude of the lower left corner
+    /// - parameter lat2: latitude of the upper right corner
+    /// - parameter long2: longitude of the upper right corner
+    case resources(zone: String, lat1: Double, long1: Double, lat2: Double, long2: Double)
     
     static let baseURL = Environment.baseURL
     
@@ -27,7 +32,8 @@ enum APIRouter {
     
     var urlParameters: [URLQueryItem]? {
         switch self {
-        case .resources(let lat1,
+        case .resources(_,
+                        let lat1,
                         let long1,
                         let lat2,
                         let long2):
@@ -40,8 +46,8 @@ enum APIRouter {
     
     var path: String {
         switch self {
-        case .resources(let lat1, let long1, let lat2, let long2):
-            return String.init(format: kGETResources, lat1, long1, lat2, long2)
+        case .resources(let zone, _, _, _, _):
+            return String.init(format: kGETResources, zone)
         }
     }
     

@@ -8,8 +8,11 @@
 
 import Foundation
 
+// MARK: - API key
 let kAPIGSMKey = "AIzaSyCsfNFC2n5bUE-4JrNJJnSSKOK-qpcsoQE"
-let kGETResources = "/routers/lisboa/resources"
+// MARK: - API endpoints
+let kGETResources = "/routers/%@/resources"
 
+// MARK: - API params
 let kParamZoneLeft = "lowerLeftLatLon"
 let kParamZoneRight = "upperRightLatLon"
